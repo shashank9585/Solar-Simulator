@@ -1,0 +1,217 @@
+.system-diagram-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+}
+
+.diagram-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.diagram-title-section {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.diagram-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.time-display {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--bg-tertiary);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.time-icon {
+    font-size: 1.1rem;
+}
+
+.time-value {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.sustainability-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-xl);
+    border: 1px solid;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-fast);
+}
+
+.sustainability-indicator.failure-pulse {
+    animation: failurePulse 0.5s ease-in-out infinite;
+}
+
+@keyframes failurePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 20px 5px rgba(239, 68, 68, 0.4);
+    }
+}
+
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+.system-diagram-svg {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.system-diagram-svg .pulse {
+    animation: pulse-opacity 1s ease-in-out infinite;
+}
+
+@keyframes pulse-opacity {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Failure flash animation for load container */
+.system-diagram-svg .failure-flash {
+    animation: failureFlash 0.3s ease-in-out infinite;
+}
+
+@keyframes failureFlash {
+
+    0%,
+    100% {
+        stroke-opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.8));
+    }
+
+    50% {
+        stroke-opacity: 0.5;
+        filter: drop-shadow(0 0 15px rgba(239, 68, 68, 1));
+    }
+}
+
+.diagram-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    transition: background-color var(--transition-fast);
+}
+
+.legend-color.solar {
+    background: var(--solar-yellow);
+}
+
+.legend-color.battery {
+    background: var(--battery-green);
+}
+
+.legend-color.load {
+    background: var(--load-purple);
+}
+
+/* Power flow line animations */
+@keyframes flowPulse {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -20;
+    }
+}
+
+@media (max-width: 768px) {
+    .diagram-legend {
+        flex-wrap: wrap;
+        gap: var(--space-md);
+    }
+
+    .diagram-header {
+        flex-direction: column;
+        gap: var(--space-sm);
+        align-items: flex-start;
+    }
+
+    .diagram-title-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .time-display {
+        padding: var(--space-xs) var(--space-sm);
+    }
+
+    .time-value {
+        font-size: 0.95rem;
+    }
+}

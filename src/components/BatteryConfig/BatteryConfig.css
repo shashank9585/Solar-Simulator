@@ -1,0 +1,14 @@
+.battery-value {
+    color: var(--battery-green) !important;
+}
+
+.battery-output {
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.output-grid .highlight-battery {
+    background: rgba(16, 185, 129, 0.08);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}

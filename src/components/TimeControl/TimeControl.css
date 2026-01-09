@@ -1,0 +1,387 @@
+.time-control {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    border-left: 3px solid var(--solar-yellow);
+}
+
+.time-control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+}
+
+.time-control-header h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.time-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--bg-tertiary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--solar-yellow);
+}
+
+.time-icon-badge {
+    font-size: 1.2rem;
+}
+
+.time-label {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--solar-yellow);
+}
+
+.time-control-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Day/Night Arc */
+.day-night-arc {
+    position: relative;
+    height: 60px;
+    margin-bottom: var(--space-sm);
+}
+
+.arc-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    border-radius: 40px 40px 0 0;
+    overflow: hidden;
+    display: flex;
+}
+
+.arc-night-left {
+    width: 25%;
+    background: linear-gradient(90deg, #1e293b, #334155);
+}
+
+.arc-day {
+    flex: 1;
+    background: linear-gradient(90deg, #fbbf24, #f59e0b, #fbbf24);
+}
+
+.arc-night-right {
+    width: 25%;
+    background: linear-gradient(90deg, #334155, #1e293b);
+}
+
+.sun-indicator {
+    position: absolute;
+    top: 10px;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    transition: left 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+}
+
+.arc-labels {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+/* Time Slider */
+.time-slider-container {
+    position: relative;
+    padding-bottom: var(--space-md);
+}
+
+.time-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg,
+            #1e293b 0%,
+            #1e293b 25%,
+            #fbbf24 25%,
+            #fbbf24 75%,
+            #1e293b 75%,
+            #1e293b 100%);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.time-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--solar-yellow);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.time-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.8);
+}
+
+.time-marks {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.time-mark {
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.time-mark.active {
+    color: var(--solar-yellow);
+    font-weight: 600;
+}
+
+/* Playback Controls */
+.playback-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.playback-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.playback-btn {
+    flex: 1;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.speed-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: var(--bg-tertiary);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.speed-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin: 0 var(--space-xs);
+    text-transform: uppercase;
+}
+
+.speed-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.speed-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-card-hover);
+}
+
+.speed-btn.active {
+    background: var(--solar-yellow);
+    color: var(--bg-primary);
+}
+
+.playback-btn:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--solar-yellow);
+}
+
+.playback-btn.playing {
+    background: rgba(251, 191, 36, 0.15);
+    border-color: var(--solar-yellow);
+    color: var(--solar-yellow);
+}
+
+.quick-time-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+}
+
+.quick-btn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: var(--space-xs) var(--space-sm);
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.quick-btn:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+}
+
+.quick-btn.active {
+    background: rgba(251, 191, 36, 0.15);
+    border-color: var(--solar-yellow);
+    color: var(--solar-yellow);
+}
+
+/* Solar Status */
+.solar-status {
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border-color);
+}
+
+/* ===========================
+   COMPACT MODE STYLES
+   =========================== */
+
+.time-control.compact {
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--solar-yellow);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.time-control.compact .time-control-body {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.time-control.compact .compact-slider {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: 0;
+}
+
+.compact-time-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-tertiary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--solar-yellow);
+    white-space: nowrap;
+}
+
+.compact-controls {
+    flex-shrink: 0;
+}
+
+.compact-controls .playback-main-row {
+    gap: 8px;
+}
+
+.compact-controls .speed-controls {
+    padding: 2px;
+}
+
+.compact-controls .playback-btn {
+    padding: 4px 12px;
+    width: 40px;
+    /* Square-ish for icon only */
+}
+
+.solar-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.8rem;
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+}
+
+.solar-indicator.active {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+}
+
+.solar-indicator.inactive {
+    background: rgba(100, 116, 139, 0.1);
+    color: var(--text-muted);
+}
+
+.solar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.solar-indicator.active .solar-dot {
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+    animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+.solar-indicator.inactive .solar-dot {
+    background: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .time-control-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+
+    .quick-time-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

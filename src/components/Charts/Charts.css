@@ -1,0 +1,120 @@
+.chart-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.chart-header h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    flex: 1;
+}
+
+.current-hour-badge {
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid var(--solar-yellow);
+    border-radius: var(--radius-sm);
+    color: var(--solar-yellow);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+}
+
+.power-failure-alert {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid var(--danger);
+    border-radius: var(--radius-sm);
+    color: var(--danger);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
+    animation: alertPulse 1s ease-in-out infinite;
+}
+
+@keyframes alertPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        background: rgba(239, 68, 68, 0.15);
+    }
+
+    50% {
+        opacity: 0.8;
+        background: rgba(239, 68, 68, 0.25);
+    }
+}
+
+.chart-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+}
+
+.chart-icon.solar {
+    background: rgba(251, 191, 36, 0.15);
+}
+
+.chart-icon.battery {
+    background: rgba(16, 185, 129, 0.15);
+}
+
+.chart-icon.balance {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.chart-wrapper {
+    flex: 1;
+    min-height: 200px;
+    position: relative;
+}
+
+.chart-legend-custom {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+}
+
+.legend-surplus {
+    color: var(--success);
+}
+
+.legend-deficit {
+    color: var(--danger);
+}
+
+@media (max-width: 768px) {
+    .chart-panel {
+        padding: var(--space-md);
+    }
+
+    .chart-header h4 {
+        font-size: 0.8rem;
+    }
+
+    .chart-wrapper {
+        min-height: 180px;
+    }
+}

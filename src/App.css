@@ -1,0 +1,287 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-main {
+    flex: 1;
+    padding: var(--space-xl);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: var(--space-2xl);
+}
+
+.section-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+}
+
+.section-title-bar h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.charts-update-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Configuration Section */
+.config-section {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    border: 1px solid var(--border-color);
+}
+
+.config-panels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+/* Diagram Section */
+.diagram-section {
+    /* No additional styling needed, SystemDiagram has its own */
+}
+
+/* Results Section */
+.results-section {
+    /* ResultsDashboard handles its own styling */
+}
+
+/* Time Section */
+.time-section {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Power Failure Alert Section */
+.failure-alert-section {
+    margin-bottom: var(--space-lg);
+}
+
+.global-failure-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px solid var(--danger);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    animation: failureGlow 1s ease-in-out infinite;
+}
+
+@keyframes failureGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+    }
+}
+
+.global-failure-alert .alert-icon {
+    font-size: 2rem;
+    animation: alertShake 0.5s ease-in-out infinite;
+}
+
+@keyframes alertShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-2px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+}
+
+.global-failure-alert .alert-content strong {
+    display: block;
+    color: var(--danger);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+}
+
+.global-failure-alert .alert-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Charts Section */
+.charts-section {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    border: 1px solid var(--border-color);
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.chart-item {
+    min-height: 320px;
+}
+
+.chart-item.full-width {
+    grid-column: span 2;
+}
+
+/* Footer */
+.app-footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: var(--space-xl);
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.footer-info h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-xs);
+    color: var(--solar-yellow);
+}
+
+.footer-info p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer-disclaimer {
+    text-align: center;
+}
+
+.footer-disclaimer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.footer-disclaimer strong {
+    color: var(--warning);
+}
+
+.footer-credits {
+    text-align: right;
+}
+
+.footer-credits p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .config-panels {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .config-panels>div:last-child {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 1200px) {
+    .app-main {
+        padding: var(--space-lg);
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-item.full-width {
+        grid-column: span 1;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-md);
+    }
+
+    .footer-credits {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-main {
+        padding: var(--space-md);
+    }
+
+    .config-panels {
+        grid-template-columns: 1fr;
+    }
+
+    .config-panels>div:last-child {
+        grid-column: span 1;
+    }
+
+    .section-title-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+
+    .charts-update-note {
+        display: none;
+    }
+}
+
+/* Loading State */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--text-muted);
+}
+
+/* Animation for live updates */
+@keyframes valueUpdate {
+    0% {
+        background-color: rgba(251, 191, 36, 0.2);
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+.value-updated {
+    animation: valueUpdate 0.5s ease;
+}
