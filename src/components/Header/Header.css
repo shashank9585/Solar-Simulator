@@ -59,6 +59,13 @@
     gap: var(--space-xs);
 }
 
+.theme-toggle {
+    min-width: 140px;
+    justify-content: center;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
 /* Disclaimer Banner */
 .disclaimer-banner {
     display: flex;

@@ -8,6 +8,15 @@ import './Header.css';
 function Header() {
     const [showInfo, setShowInfo] = useState(false);
 
+    const [theme, setTheme] = useState('dark');
+
+    // Toggle Theme
+    const toggleTheme = () => {
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+    };
+
     return (
         <>
             <header className="app-header">
@@ -40,6 +49,9 @@ function Header() {
                 </div>
 
                 <div className="header-actions">
+                    <button className="btn header-btn theme-toggle" onClick={toggleTheme} title="Toggle Theme">
+                        {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+                    </button>
                     <button className="btn header-btn" onClick={() => setShowInfo(true)}>
                         <span>ℹ️</span> About
                     </button>

@@ -20,13 +20,18 @@ function TimeControl({ currentHour, onHourChange, isPlaying, onPlayPauseToggle, 
 
     useEffect(() => {
         const handleScroll = () => {
-            // Threshold of 100px triggers compact mode
-            setIsCompact(window.scrollY > 100);
+            const scrollY = window.scrollY;
+            // Hysteresis to prevent flickering/vibration
+            if (scrollY > 150 && !isCompact) {
+                setIsCompact(true);
+            } else if (scrollY < 100 && isCompact) {
+                setIsCompact(false);
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [isCompact]);
 
 
 
